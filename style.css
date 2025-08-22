@@ -1,0 +1,320 @@
+/* Sentient Profile Maker - Modern black/white with gradient accents */
+:root {
+  --bg: #0b0b0c;
+  --fg: #f6f6f7;
+  --muted: #b1b1b6;
+  --card: #111113;
+  --card-2: #0e0e10;
+  --accent1: rgba(255, 255, 255, 0.25);
+  --accent2: rgba(255, 255, 255, 0.06);
+  --ring: #ffffff;
+  --grad1: rgba(255, 255, 255, 0.08);
+  --grad2: rgba(255, 255, 255, 0.02);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --radius: 22px;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+html {
+  background: #fffbf2;
+}
+body {
+  margin: 0;
+  color: var(--fg);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  letter-spacing: 0.2px;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  position: sticky;
+  top: 0;
+  backdrop-filter: saturate(1.5) blur(8px);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 10;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-logo {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
+}
+.brand-name {
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.4px;
+  color: black;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.container {
+  width: min(1200px, 100%);
+  margin: 24px auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 18px;
+}
+
+.panel .card {
+  background: linear-gradient(180deg, var(--card), var(--card-2));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  margin: 10px;
+}
+
+.card h2 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+.center {
+  text-align: center;
+}
+
+.file-drop {
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  width: 100%;
+  height: 160px;
+  border-radius: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.03)
+  );
+  transition: border-color 0.2s, background 0.2s;
+  margin-top: 10px;
+}
+.file-drop:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.09),
+    rgba(255, 255, 255, 0.05)
+  );
+}
+.file-drop input {
+  display: none;
+}
+.file-drop span {
+  color: var(--muted);
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+.mt-2 {
+  margin-top: 12px;
+}
+.mt-3 {
+  margin-top: 18px;
+}
+
+.file-mini {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+}
+.file-mini input {
+  display: none;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.16);
+  transition: 0.2s;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  top: 2px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+.switch input:checked + .slider {
+  background: rgba(255, 255, 255, 0.3);
+}
+.switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.label {
+  font-size: 14px;
+}
+
+.control {
+  width: 100%;
+}
+.control label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: var(--fg);
+}
+.control input[type="range"] {
+  width: 100%;
+}
+.range-readout {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.preview .canvas-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  border-radius: 18px;
+  background: radial-gradient(
+      500px 350px at 40% -10%,
+      rgba(255, 255, 255, 0.06),
+      transparent
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.02)
+    );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px;
+}
+#previewCanvas {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  max-width: 720px;
+  background: conic-gradient(
+    from 220deg at 50% 50%,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0.06) 70%,
+    rgba(255, 255, 255, 0)
+  );
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 25px 60px rgba(0, 0, 0, 0.6);
+}
+.loading {
+  position: absolute;
+  inset: auto 12px 12px auto;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+.hidden {
+  display: none;
+}
+
+.ghost-btn,
+.primary-btn {
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--fg);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+}
+.primary-btn {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.85)
+  );
+  color: #111;
+  border-color: rgba(255, 255, 255, 0.9);
+}
+.primary-btn:active {
+  transform: translateY(1px);
+}
+
+.site-footer {
+  text-align: center;
+  color: black;
+  padding: 20px 12px 40px;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .site-header {
+    padding: 14px 14px;
+  }
+}

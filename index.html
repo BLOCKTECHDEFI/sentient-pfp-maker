@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentient Profile Maker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <img src="logo.svg" alt="Sentient profile maker " class="brand-logo" />
+        <span class="brand-name"> Sentient profile maker </span>
+      </div>
+      <nav class="actions">
+        <a
+          class="ghost-btn"
+          href="https://x.com/intent/tweet?text=I%20just%20made%20my%20Sentient-styled%20PFP%20%23Sentient"
+          target="_blank"
+          rel="noopener"
+          >Share</a
+        >
+        <a class="ghost-btn" href="#" id="downloadBtn" aria-disabled="true"
+          >Download</a
+        >
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="panel left">
+        <div class="card uploader">
+          <h2>1) Upload your PFP</h2>
+          <p class="muted">
+            Use a square image for the cleanest circular crop.
+          </p>
+          <label class="file-drop" for="pfpInput">
+            <input id="pfpInput" type="file" accept="image/*" />
+            <span>Drop image here or click to upload</span>
+          </label>
+
+          <div class="inline grid-2 mt-3">
+            <div>
+              <label class="switch">
+                <input id="useCustomLogo" type="checkbox" />
+                <span class="slider"></span>
+              </label>
+              <span class="label">Use custom logo</span>
+            </div>
+            <label class="file-mini" for="logoInput">
+              <input
+                id="logoInput"
+                type="file"
+                accept="image/*,image/svg+xml"
+                disabled
+              />
+              <span>Upload logo</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="card controls">
+          <h2>2) Style controls</h2>
+
+          <div class="control">
+            <label for="logoCount">Logos around ring</label>
+            <input
+              id="logoCount"
+              type="range"
+              min="8"
+              max="72"
+              step="1"
+              value="28"
+            />
+            <div class="range-readout"><span id="logoCountVal">28</span></div>
+          </div>
+
+          <div class="control">
+            <label for="logoScale">Logo size (%)</label>
+            <input
+              id="logoScale"
+              type="range"
+              min="2"
+              max="20"
+              step="1"
+              value="8"
+            />
+            <div class="range-readout"><span id="logoScaleVal">8%</span></div>
+          </div>
+
+          <div class="control">
+            <label for="ringOffset">Ring offset (px)</label>
+            <input
+              id="ringOffset"
+              type="range"
+              min="-60"
+              max="120"
+              step="1"
+              value="18"
+            />
+            <div class="range-readout">
+              <span id="ringOffsetVal">18px</span>
+            </div>
+          </div>
+
+          <div class="inline grid-2">
+            <div class="control">
+              <label for="borderThickness">Gradient border (px)</label>
+              <input
+                id="borderThickness"
+                type="range"
+                min="0"
+                max="80"
+                step="1"
+                value="18"
+              />
+              <div class="range-readout">
+                <span id="borderThicknessVal">18px</span>
+              </div>
+            </div>
+            <div class="control">
+              <label for="shadowStrength">Shadow strength</label>
+              <input
+                id="shadowStrength"
+                type="range"
+                min="0"
+                max="40"
+                step="1"
+                value="14"
+              />
+              <div class="range-readout">
+                <span id="shadowStrengthVal">14</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline grid-2">
+            <div class="control checkbox">
+              <label class="switch">
+                <input id="alignTangent" type="checkbox" checked />
+                <span class="slider"></span>
+              </label>
+              <span class="label">Rotate logos along ring</span>
+            </div>
+            <div class="control checkbox">
+              <label class="switch">
+                <input id="addWatermark" type="checkbox" checked />
+                <span class="slider"></span>
+              </label>
+              <span class="label">Add main watermark</span>
+            </div>
+          </div>
+
+          <div class="inline grid-2">
+            <div class="control">
+              <label for="watermarkScale">Watermark size (%)</label>
+              <input
+                id="watermarkScale"
+                type="range"
+                min="5"
+                max="40"
+                step="1"
+                value="18"
+              />
+              <div class="range-readout">
+                <span id="watermarkScaleVal">18%</span>
+              </div>
+            </div>
+            <div class="control">
+              <label for="watermarkY">Watermark offset Y (px)</label>
+              <input
+                id="watermarkY"
+                type="range"
+                min="-120"
+                max="120"
+                step="1"
+                value="10"
+              />
+              <div class="range-readout">
+                <span id="watermarkYVal">10px</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline grid-2">
+            <div class="control">
+              <label for="canvasSize">Export size (px)</label>
+              <input
+                id="canvasSize"
+                type="range"
+                min="512"
+                max="2048"
+                step="64"
+                value="1024"
+              />
+              <div class="range-readout">
+                <span id="canvasSizeVal">1024px</span>
+              </div>
+            </div>
+            <div class="control checkbox">
+              <label class="switch">
+                <input id="transparentBg" type="checkbox" />
+                <span class="slider"></span>
+              </label>
+              <span class="label">Transparent background</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel right">
+        <div class="card preview">
+          <div class="canvas-wrap">
+            <canvas
+              id="previewCanvas"
+              width="640"
+              height="640"
+              aria-label="Preview canvas"
+            ></canvas>
+            <div id="loading" class="loading hidden">Rendering…</div>
+          </div>
+          <div class="inline mt-3">
+            <button id="resetBtn" class="ghost-btn">Reset</button>
+            <button id="downloadBtnBottom" class="primary-btn">
+              Download PNG
+            </button>
+          </div>
+          <p class="muted center mt-2">
+            Tip: pinch to zoom on mobile to inspect quality.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Made with love for the Sentient community by
+        <a
+          href="https://x.com/blocktechdefi"
+          target="_blank"
+          style="color: red; text-decoration: none; font-weight: bold"
+        >
+          Blocktech
+        </a>
+        • Works on mobile & desktop • No data leaves your device
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
